@@ -1,0 +1,55 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    environment:
+      - POSTGRES_SERVER=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=dental_clinic
+      - STORAGE_PROVIDER=local
+      - LOCAL_STORAGE_PATH=static/uploads
+    depends_on:
+      - db
+    networks:
+      - dental-network
+    restart: always
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend
+    networks:
+      - dental-network
+    restart: always
+
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=dental_clinic
+    ports:
+      - "5432:5432"
+    networks:
+      - dental-network
+    restart: always
+
+networks:
+  dental-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
