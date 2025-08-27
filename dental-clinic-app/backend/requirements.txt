@@ -1,0 +1,48 @@
+# FastAPI and ASGI server
+fastapi>=0.104.0
+uvicorn>=0.23.2
+pydantic>=2.4.2
+pydantic-settings>=2.0.3
+
+# Database
+sqlalchemy>=2.0.22
+alembic>=1.12.0
+psycopg2-binary>=2.9.9
+asyncpg>=0.28.0
+
+# Authentication and security
+python-jose>=3.3.0
+passlib>=1.7.4
+bcrypt>=4.0.1
+python-multipart>=0.0.6
+
+# File handling
+python-magic>=0.4.27
+aiofiles>=23.2.1
+
+# Cloud storage
+boto3>=1.28.57
+firebase-admin>=6.2.0
+
+# AI integration
+openai>=1.2.0
+anthropic>=0.5.0
+
+# Messaging
+twilio>=8.9.1
+sendgrid>=6.10.0
+
+# PDF generation
+reportlab>=4.0.4
+weasyprint>=60.1
+
+# Testing
+pytest>=7.4.2
+httpx>=0.25.0
+
+# Utilities
+python-dotenv>=1.0.0
+tenacity>=8.2.3
+emails>=0.6
+jinja2>=3.1.2
+pillow>=10.0.1
